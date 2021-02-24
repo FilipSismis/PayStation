@@ -39,8 +39,86 @@ public class TestCalculationCurrencyDkk {
 		// Assert
 		assertEquals("Should display 3 min for 50 øre", expectedParkingTime, ps.readDisplay());
 	}
-
-
+	
+	@Test
+	public void shouldDisplay5MinFor1kr() throws IllegalCoinException {
+		
+		// Arrange
+		int expectedParkingTime = 5;	// In minutes
+		int coinValue = 1;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+		
+		// Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+			
+		// Assert
+		assertEquals("Should display 5 min for 1 kr.", expectedParkingTime, ps.readDisplay());
+	}
+	
+	@Test
+	public void shouldDisplay11MinFor2kr() throws IllegalCoinException {
+		
+		// Arrange
+		int expectedParkingTime = 11;	// In minutes
+		int coinValue = 2;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+		
+		// Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+			
+		// Assert
+		assertEquals("Should display 11 min for 2 kr.", expectedParkingTime, ps.readDisplay());
+	}
+	
+	@Test
+	public void shouldDisplay27MinFor5kr() throws IllegalCoinException {
+		
+		// Arrange
+		int expectedParkingTime = 27;	// In minutes
+		int coinValue = 5;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+		
+		// Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+			
+		// Assert
+		assertEquals("Should display 27 min for 5 kr.", expectedParkingTime, ps.readDisplay());
+	}
+	
+	@Test
+	public void shouldDisplay53MinFor10kr() throws IllegalCoinException {
+		
+		// Arrange
+		int expectedParkingTime = 53;	// In minutes
+		int coinValue = 10;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+		
+		// Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+			
+		// Assert
+		assertEquals("Should display 53 min for 10 kr.", expectedParkingTime, ps.readDisplay());
+	}
+	
+	@Test
+	public void shouldDisplay107MinFor20kr() throws IllegalCoinException {
+		
+		// Arrange
+		int expectedParkingTime = 107;	// In minutes
+		int coinValue = 20;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
+		
+		// Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+			
+		// Assert
+		assertEquals("Should display 107 min for 20 kr.", expectedParkingTime, ps.readDisplay());
+	}
 
 	/** Fixture for pay station testing. */
 	@After
