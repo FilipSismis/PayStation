@@ -9,9 +9,9 @@ import java.util.Date;
 
 public class PPrice {
 	
-	// Parkingtime in seconds / 1 cent (Currency: Euro)
+	// Parking time in seconds / 1 cent (Currency: Euro)
 	private int price;	
-	// Price depends on the pay stations parkingzone
+	// Price depends on the pay stations parking zone
 	private PZone parkingZone;	
 	// Exchange rate 1 Euro to DKK
 	private double exchangeEuroDkk;
@@ -23,10 +23,11 @@ public class PPrice {
 		this.parkingZone = new PZone();
 		this.exchangeEuroDkk = 7.5;
 	}
-
+	
 	public PPrice(int parkingPrice, PZone parkingZone) {
 		this.price = parkingPrice;
 		this.parkingZone = parkingZone;
+		this.exchangeEuroDkk = 7.5;
 	}
 	
 	public PPrice(int parkingPrice, PZone parkingZone, double exchangeEuroDkk) {

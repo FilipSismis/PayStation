@@ -48,7 +48,7 @@ public class TestDatabaseAccess {
 	
 	
 	@Test
-	public void wasInsertedBuy() {
+	public void wasInsertedBuy() throws DatabaseLayerException {
 		
 		// Arrange
 		LocalDate timeNow = java.time.LocalDate.now();
@@ -64,42 +64,106 @@ public class TestDatabaseAccess {
 		DatabasePBuy dbPbuy = new DatabasePBuy();
 		
 		// Act
-		int key = 0; //TODO: Call dbPbuy
+		int key = dbPbuy.insertParkingBuy(tempPBuy);
 		
 		// Assert
-		assertEquals("Dummy", key > 0);
+		assertTrue("Buy was inserted if the key is bigger than 0", key > 0);
 		
 	}	
 	
 	
 	@Test
-	public void wasRetrievedPriceDatabaselayer() {
+	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
+		
 		// Arrange
 		PPrice foundPrice = null;
 		int pZoneId = 2;
 		DatabasePPrice dbPrice = new DatabasePPrice();
-
 		
 		// Act
-
+		foundPrice = dbPrice.getPriceByZoneId(pZoneId);
+		
 		// Assert
-		assertEquals("Dummy", 0, 1);
+		assertNotNull("Price retrieved - can not be null", foundPrice);
+		
+	}
+	
+	@Test(expected = DatabaseLayerException.class)
+	public void wasNotRetrievedPriceDatabaselayer() throws DatabaseLayerException {
+		
+		// Arrange
+		PPrice foundPrice = null;
+		int pZoneId = -2;
+		DatabasePPrice dbPrice = new DatabasePPrice();
+		
+		// Act
+		foundPrice = dbPrice.getPriceByZoneId(pZoneId);
+		
+		// Assert
+		assertNotNull("Price retrieved - can not be null", foundPrice);
+		
+	}
+	
+	@Test
+	public void wasRetrievedZoneDatabaselayer() throws DatabaseLayerException {
+		
+		// Arrange
+		PZone foundZone = null;
+		int pZoneId = 2;
+		DatabasePZone dbZone = new DatabasePZone();
+		
+		// Act
+		foundZone = dbZone.getZonebyId(pZoneId);
+		
+		// Assert
+		assertNotNull("Zone retrieved - can not be null", foundZone);
+		
+	}
+	
+	@Test(expected = DatabaseLayerException.class)
+	public void wasNotRetrievedZoneDatabaselayer() throws DatabaseLayerException {
+		
+		// Arrange
+		PZone foundZone = null;
+		int pZoneId = -2;
+		DatabasePZone dbZone = new DatabasePZone();
+		
+		// Act
+		foundZone = dbZone.getZonebyId(pZoneId);
+		
+		// Assert
+		assertNotNull("Zone retrieved - can not be null", foundZone);
 		
 	}
 	
 	
 	@Test
-	public void wasRetrievedPriceControllayer() {
+	public void wasRetrievedPriceControllayer() throws DatabaseLayerException {
 
 		// Arrange
-
-		
+		ControlPrice controlPrice = new ControlPrice();
+		PPrice price = null;
+		int pZoneId = 2;
 		// Act
-
+		price = controlPrice.getPriceRemote(pZoneId);
 		// Assert
-		assertEquals("Dummy", 0, 1);
+		assertNotNull("Price retrieved - can not be null", price);
 		
-	}	
+	}
+	
+	@Test(expected = DatabaseLayerException.class)
+	public void wasNotRetrievedPriceControllayer() throws DatabaseLayerException {
+
+		// Arrange
+		ControlPrice controlPrice = new ControlPrice();
+		PPrice price = null;
+		int pZoneId = -2;
+		// Act
+		price = controlPrice.getPriceRemote(pZoneId);
+		// Assert
+		assertNotNull("Price retrieved - can not be null", price);
+		
+	}
 	
 	
 	/** Fixture for pay station testing. */

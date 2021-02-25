@@ -22,7 +22,7 @@ public class ControlPrice {
 	
 	public PPrice getPriceRemote(int zoneId) throws DatabaseLayerException {
 		
-		// Get price from Parkingsystem DB
+		// Get price from Parking system DB
 		PPrice readPrice = dbPrice.getPriceByZoneId(zoneId);
 		//
 		return readPrice;
