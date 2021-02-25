@@ -41,10 +41,10 @@ public class TestCalculationCurrencyDkk {
 	}
 	
 	@Test
-	public void shouldDisplay5MinFor1kr() throws IllegalCoinException {
+	public void shouldDisplay6MinFor1kr() throws IllegalCoinException {
 		
 		// Arrange
-		int expectedParkingTime = 5;	// In minutes
+		int expectedParkingTime = 6;	// In minutes
 		int coinValue = 1;
 		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
 		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
@@ -53,7 +53,7 @@ public class TestCalculationCurrencyDkk {
 		ps.addPayment(coinValue, coinCurrency, coinType);
 			
 		// Assert
-		assertEquals("Should display 5 min for 1 kr.", expectedParkingTime, ps.readDisplay());
+		assertEquals("Should display 6 min for 1 kr.", expectedParkingTime, ps.readDisplay());
 	}
 	
 	@Test
@@ -89,10 +89,10 @@ public class TestCalculationCurrencyDkk {
 	}
 	
 	@Test
-	public void shouldDisplay53MinFor10kr() throws IllegalCoinException {
+	public void shouldDisplay54MinFor10kr() throws IllegalCoinException {
 		
 		// Arrange
-		int expectedParkingTime = 53;	// In minutes
+		int expectedParkingTime = 54;	// In minutes
 		int coinValue = 10;
 		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
 		Currency.ValidCoinType coinType = Currency.ValidCoinType.INTEGER;
@@ -101,7 +101,7 @@ public class TestCalculationCurrencyDkk {
 		ps.addPayment(coinValue, coinCurrency, coinType);
 			
 		// Assert
-		assertEquals("Should display 53 min for 10 kr.", expectedParkingTime, ps.readDisplay());
+		assertEquals("Should display 54 min for 10 kr.", expectedParkingTime, ps.readDisplay());
 	}
 	
 	@Test

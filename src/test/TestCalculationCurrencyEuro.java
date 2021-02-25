@@ -38,10 +38,10 @@ public class TestCalculationCurrencyEuro {
 	}
 	
 	@Test
-	public void shouldDisplay0MinFor1Cents() throws IllegalCoinException {
+	public void shouldDisplay1MinFor1Cents() throws IllegalCoinException {
 		
 		// Arrange
-		int expectedParkingTime = 0;	// In minutes		
+		int expectedParkingTime = 1;	// In minutes		
 		int coinValue = 1;
 		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.EURO;
 		Currency.ValidCoinType coinType = Currency.ValidCoinType.FRACTION;

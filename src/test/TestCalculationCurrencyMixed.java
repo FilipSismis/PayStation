@@ -54,9 +54,9 @@ public class TestCalculationCurrencyMixed {
 	}
 	
 	@Test
-	public void shouldDisplay7MinFor5CentsAnd1Dkr() throws IllegalCoinException {
+	public void shouldDisplay8MinFor5CentsAnd1Dkr() throws IllegalCoinException {
 		// Arrange
-		int expectedParkingTime = 7;	// In minutes
+		int expectedParkingTime = 8;	// In minutes
 		int coinValue1 = 5;
 		int coinValue2 = 1;
 		Currency.ValidCurrency coinCurrency1 = Currency.ValidCurrency.EURO;
@@ -67,7 +67,7 @@ public class TestCalculationCurrencyMixed {
 		ps.addPayment(coinValue1, coinCurrency1, coinType1);
 		ps.addPayment(coinValue2, coinCurrency2, coinType2);
 		// Assert
-		assertEquals("Should be displayed 7 min for 5 cents and 1 Dkr", expectedParkingTime,ps.readDisplay());		
+		assertEquals("Should be displayed 8 min for 5 cents and 1 Dkr", expectedParkingTime,ps.readDisplay());		
 	}
 	
 	@Test(expected = IllegalCoinException.class)
