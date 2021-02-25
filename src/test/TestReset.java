@@ -26,7 +26,15 @@ public class TestReset {
 	 */
 	@Test
 	public void shouldClearAfterBuy() throws IllegalCoinException, Exception {
-		//
+		//Arrange
+		int coinValue = 50;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.FRACTION;
+		//Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+		ps.buy();
+		//Assert
+		assertEquals("After buy the display should reset to 0", 0, ps.readDisplay());
 	}
 
 	/**
@@ -34,6 +42,21 @@ public class TestReset {
 	 */
 	@Test
 	public void shouldClearAfterCancel() throws IllegalCoinException {
-		//
+		//Arrange
+		int coinValue = 50;
+		Currency.ValidCurrency coinCurrency = Currency.ValidCurrency.DKK;
+		Currency.ValidCoinType coinType = Currency.ValidCoinType.FRACTION;
+		//Act
+		ps.addPayment(coinValue, coinCurrency, coinType);
+		ps.cancel();
+		//Assert
+		assertEquals("After cancel the display should reset to 0", 0, ps.readDisplay());
 	}
+	
+	/** Fixture for pay station testing. */
+	@After
+	public void cleanUp() {
+		ps.setReady();
+	}	
+	
 }
