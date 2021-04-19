@@ -49,10 +49,10 @@ public class TestDatabaseAccess {
 	
 	@Test
 	public void wasInsertedBuy() throws DatabaseLayerException {
-		
 		// Arrange
 		LocalDate timeNow = java.time.LocalDate.now();
 		double payedCentAmount = 100;
+		DatabasePBuy dbPbuy = new DatabasePBuy();
 		
 		tempPBuy = new PBuy();
 		
@@ -60,48 +60,35 @@ public class TestDatabaseAccess {
 		pStat.setAmount(payedCentAmount);
 		tempPBuy.setAssociatedPaystation(pStat);
 		tempPBuy.setBuyTime(timeNow);
-		
-		DatabasePBuy dbPbuy = new DatabasePBuy();
-		
 		// Act
 		int key = dbPbuy.insertParkingBuy(tempPBuy);
-		
 		// Assert
 		assertTrue("Buy was inserted if the key is bigger than 0", key > 0);
-		
 	}	
 	
 	
 	@Test
 	public void wasRetrievedPriceDatabaselayer() throws DatabaseLayerException {
-		
 		// Arrange
 		PPrice foundPrice = null;
 		int pZoneId = 2;
 		DatabasePPrice dbPrice = new DatabasePPrice();
-		
 		// Act
 		foundPrice = dbPrice.getPriceByZoneId(pZoneId);
-		
 		// Assert
 		assertNotNull("Price retrieved - can not be null", foundPrice);
-		
 	}
 	
 	@Test(expected = DatabaseLayerException.class)
 	public void wasNotRetrievedPriceDatabaselayer() throws DatabaseLayerException {
-		
 		// Arrange
 		PPrice foundPrice = null;
 		int pZoneId = -2;
 		DatabasePPrice dbPrice = new DatabasePPrice();
-		
 		// Act
 		foundPrice = dbPrice.getPriceByZoneId(pZoneId);
-		
 		// Assert
 		assertNotNull("Price retrieved - can not be null", foundPrice);
-		
 	}
 	
 	@Test
@@ -174,7 +161,7 @@ public class TestDatabaseAccess {
 	
 	@AfterClass
 	public static void cleanUpWhenFinish() {
-		// 		
+				
 		// Arrange
 		DatabasePBuy dbPbuy = new DatabasePBuy();
 		int numDeleted = 0;

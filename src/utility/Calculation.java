@@ -5,10 +5,10 @@ import modellayer.Currency;
 import modellayer.PPrice;
 
 public class Calculation {
+	
 	public Calculation() {}
 	
 	public double getCoinValueInCent(Coin coin, PPrice currentPrice) {
-		
 		double centAmount = 0.0;
 		double coinValue = coin.getAmount();
 		
@@ -20,14 +20,13 @@ public class Calculation {
 				centAmount = coinValue / currentPrice.getExchangeEuroDkk();
 			}
 		}else {
-
 			if (coin.getCoinType() == Currency.ValidCoinType.INTEGER) {
 				centAmount = coinValue * 100;
 			}else {
 				centAmount = coinValue;
 			}	
 		}
-		
 		return centAmount;
 	}
 }
+
